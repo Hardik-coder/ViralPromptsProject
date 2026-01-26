@@ -1,0 +1,174 @@
+/* ---- Global Background ---- */
+body {
+  min-height: 100vh;
+  color: #f5f5f5;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(120,90,255,0.25), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(0,220,255,0.18), transparent 45%),
+    linear-gradient(180deg, #1b1e2b 0%, #151825 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* ---- Title ---- */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #c7b8ff 0%, #7dd3fc 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(124,124,255,0.25);
+}
+
+/* ---- Preview Image ---- */
+.preview-img {
+  max-width: 600px;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(120,90,255,0.25);
+}
+
+/* ---- Prompt ID ---- */
+.prompt-id {
+  background: rgba(120,90,255,0.18);
+  border: 1px solid rgba(120,90,255,0.35);
+  color: #e9d5ff;
+  border-radius: 999px;
+  font-size: 13px;
+  padding: 6px 16px;
+  text-shadow: 0 0 6px rgba(120,90,255,0.5);
+}
+
+/* ---- Buttons ---- */
+.btn-copy{
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  border: none;
+  border-radius: 16px;
+  padding: 12px 26px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(120,90,255,0.6), 0 0 40px rgba(56,189,248,0.4);
+  transition: 0.25s ease;
+}
+.btn-copy:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(120,90,255,0.8), 0 0 60px rgba(56,189,248,0.6);
+}
+/* ---- Share Button ---- */
+.btn-share {
+  background: linear-gradient(135deg, #ff69b4, #ff85c1); /* pink gradient */
+  border: none;
+  border-radius: 16px;
+  padding: 12px 26px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(255,105,180,0.6), 0 0 40px rgba(255,105,180,0.4);
+  transition: 0.25s ease;
+}
+
+.btn-share:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(255,105,180,0.8), 0 0 60px rgba(255,105,180,0.6);
+}
+
+/* ---- Tags ---- */
+/* Base neon outline tag */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: transparent; /* no fill */
+  border: 2px solid;       /* outline only */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px currentColor; /* glow matches outline color */
+}
+
+/* Color Variants */
+.tag-pink {
+  border-color: #ff6ec4;
+  color: #ff6ec4;
+}
+
+.tag-cyan {
+  border-color: #00c6ff;
+  color: #00c6ff;
+}
+
+.tag-green {
+  border-color: #10a37f;
+  color: #10a37f;
+}
+
+.tag-orange {
+  border-color: #ff9966;
+  color: #ff9966;
+}
+
+.tag-purple {
+  border-color: #a18cd1;
+  color: #a18cd1;
+}
+
+.tag-yellow {
+  border-color: #ffd200;
+  color: #ffd200;
+}
+
+/* ---- Prompt Text ---- */
+/* Prompt Text Box */
+.prompt-text {
+  background: rgba(0,0,0,0.35);
+  border-radius: 16px;
+  padding: 1px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid rgba(255,255,255,0.1);
+  white-space: pre-line;
+  width: 100%;              /* full width on PC */
+  max-width: 100%;          /* ensures it stretches */
+  max-height: 125px;            /* fixed height */
+  overflow: hidden;         /* hide overflow */
+  position: relative;       /* for fade effect */
+}
+
+/* Fade-out effect at bottom */
+.prompt-text::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px; /* fade height */
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(21,24,37,0.95));
+  border-radius: 0 0 16px 16px;
+  pointer-events: none;
+}
+/* Responsive tweak for mobile */
+@media (max-width: 768px) {
+  .prompt-text {
+    height: 150px;          /* smaller fixed height on mobile */
+  }
+}
+
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .preview-img {
+    max-width: 100%;
+  }
+  .btn-copy, .btn-share {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
+

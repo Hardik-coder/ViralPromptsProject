@@ -1,0 +1,81 @@
+/* Page Base */
+.construction-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Container */
+.construction-container {
+  text-align: center;
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 25px rgba(124,124,255,0.4), 0 0 50px rgba(56,189,248,0.3);
+}
+
+/* Title */
+.construction-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(124,124,255,0.6);
+}
+
+/* Message */
+.construction-message {
+  font-size: 1.1rem;
+  margin: 20px 0;
+  color: #e0e0ff;
+  text-shadow: 0 0 6px rgba(124,124,255,0.5);
+}
+
+/* Tags (reuse your neon outline style) */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: transparent;
+  border: 2px solid;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px currentColor;
+}
+
+.tag-cyan { border-color: #00c6ff; color: #00c6ff; }
+.tag-green { border-color: #10a37f; color: #10a37f; }
+.tag-orange { border-color: #ff9966; color: #ff9966; }
+.tag-purple { border-color: #a18cd1; color: #a18cd1; }
+
+/* Back Home Button (reuse neon style) */
+.back-home-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff !important;
+  text-decoration: none;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8) !important;
+  box-shadow: 0 0 20px rgba(120,90,255,0.6), 0 0 40px rgba(56,189,248,0.4);
+  transition: all 0.25s ease;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(120,90,255,0.8), 0 0 60px rgba(56,189,248,0.6);
+}

@@ -1,0 +1,253 @@
+/* ---- Global Background ---- */
+body {
+  min-height: 100vh;
+  color: #f5f5f5;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(120,90,255,0.25), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(0,220,255,0.18), transparent 45%),
+    linear-gradient(180deg, #1b1e2b 0%, #151825 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* ---- Hero Section ---- */
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #c7b8ff 0%, #7dd3fc 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(124,124,255,0.25);
+}
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #cbd5f5;
+  max-width: 520px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+/* ---- Search ---- */
+.search-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  color: #fff;
+  padding: 14px 18px;
+}
+.search-input::placeholder {
+  color: #cbd5f5;
+}
+
+/* ---- Prompt Card ---- */
+.prompt-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 22px;
+  padding: 22px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.prompt-card:hover {
+  box-shadow: 0 25px 70px rgba(0,0,0,0.55), 0 0 30px rgba(120,90,255,0.25);
+  transition: 0.3s ease;
+}
+
+/* ---- Card Header ---- */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prompt-id {
+  background: rgba(120,90,255,0.18);
+  border: 1px solid rgba(120,90,255,0.35);
+  color: #e9d5ff;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 5px 14px;
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e0e0ff;
+  text-shadow: 0 0 6px rgba(120,90,255,0.5);
+  background: rgba(0,0,0,0.35);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* ---- Single Image ---- */
+.img-single {
+  flex: 0 1 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.img-single img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+.img-caption {
+  display: block;
+  text-align: center;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e0e0ff;
+  text-shadow: 0 0 6px rgba(120,90,255,0.5);
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ---- Prompt Text ---- */
+.prompt-text {
+  background: rgba(0,0,0,0.35);
+  border-radius: 16px;
+  padding: 12px;              /* reduced padding */
+  font-family: monospace;
+  font-size: 13px;            /* slightly smaller font */
+  line-height: 1.4;           /* tighter line spacing */
+  border: 1px solid rgba(255,255,255,0.1);
+  white-space: pre-line;
+  max-height: 180px;          /* limit height (about 40% smaller than before) */
+  overflow-y: auto;           /* scroll if content exceeds */
+}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 0.9rem;
+  }
+  .prompt-id {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+  .prompt-text {
+    font-size: 12.5px;
+    line-height: 1.35;
+    max-height: 140px;        /* smaller height on mobile */
+  }
+}
+
+
+/* ---- View Prompt Button ---- */
+.view-prompt-btn {
+  position: relative;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f5ecff;
+  background: rgba(170, 100, 255, 0.08);
+  border: 1px solid rgba(170, 100, 255, 0.45);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.view-prompt-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 0 16px rgba(170, 100, 255, 0.4);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.view-prompt-btn:hover {
+  background: rgba(170, 100, 255, 0.16);
+  box-shadow: 0 0 24px rgba(170, 100, 255, 0.6);
+  color: #ffffff;
+}
+.view-prompt-btn .arrow {
+  transition: transform 0.2s ease;
+}
+.view-prompt-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .img-single {
+    max-width: 100%;
+  }
+  .card-title {
+    font-size: 0.9rem;
+  }
+  .prompt-id {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+}
+/* Pagination Bar */
+.pagination-bar {
+  margin-top: 40px;
+}
+
+/* Base style for page buttons */
+.page-btn {
+  position: relative;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f5ecff;
+  background: rgba(170, 100, 255, 0.08);
+  border: 1px solid rgba(170, 100, 255, 0.45);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Neon aura */
+.page-btn::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 0 16px rgba(170, 100, 255, 0.4);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Hover effect */
+.page-btn:hover {
+  background: rgba(170, 100, 255, 0.16);
+  box-shadow: 0 0 24px rgba(170, 100, 255, 0.6);
+  color: #ffffff;
+}
+
+.page-btn .arrow {
+  transition: transform 0.2s ease;
+}
+
+.prev-btn:hover .arrow {
+  transform: translateX(-4px);
+}
+.next-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagination-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .page-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
