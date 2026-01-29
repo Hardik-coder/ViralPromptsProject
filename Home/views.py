@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Prompt
 from django.db.models import Q
+from django.http import Http404
 
 # Create your views here.
 def home(request):
@@ -28,7 +29,13 @@ def home(request):
     # Paginate the prompts, 5 per page
     paginator = Paginator(prompts_list, 10)
     page_number = request.GET.get('page')
-    prompt_obj = paginator.get_page(page_number)
+    if page_number is None:
+        page_number = 1
+    try:
+        prompt_obj = paginator.page(page_number)
+    except (EmptyPage, PageNotAnInteger):
+        raise Http404("not found")
+    
     return render(request, 'index.html', {'prompt_obj': prompt_obj, 'query': query})
 
 
