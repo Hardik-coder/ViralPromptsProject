@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/signup-style.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="signup-container">
+  <h2 class="signup-title">Create Account</h2>
+  
+  <form class="signup-form" method="post" action="">
+    {% csrf_token %}
+    <!-- Error Message -->
+     {% if messages %}
+     {% for message in messages %}
+<div class="alert alert-danger custom-error" role="alert">
+  ⚠️ {{message}}
+</div>
+{% endfor %}
+{% endif %}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Choose a username" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Enter your password" required>
+    </div>
+
+    <button type="submit" class="signup-btn">Sign Up</button>
+  </form>
+
+  <p class="redirect-text">
+    Already have an account? <a href="{% url "login" %}">Login here</a>
+  </p>
+</div>
+{% endblock content %}

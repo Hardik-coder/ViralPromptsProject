@@ -1,0 +1,58 @@
+.check-email-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(124,124,255,0.4);
+  text-align: center;
+}
+
+.check-email-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(124,124,255,0.6);
+}
+
+.check-email-text {
+  font-size: 1rem;
+  color: #e0e0ff;
+  margin-bottom: 15px;
+}
+
+.check-email-subtext {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.check-email-subtext a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.check-email-subtext a:hover {
+  text-shadow: 0 0 8px rgba(124,124,255,0.6);
+}
+
+.redirect-login {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #e0e0ff;
+}
+
+.redirect-login a {
+  color: #7c7cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.redirect-login a:hover {
+  text-shadow: 0 0 8px rgba(124,124,255,0.6);
+}

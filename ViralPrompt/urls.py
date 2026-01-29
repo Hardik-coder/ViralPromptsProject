@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('super-secret-admin/', admin.site.urls),
     path('', include('Home.urls')),
+    path('accounts/', include('accounts.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(

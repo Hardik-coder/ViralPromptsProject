@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Check Your Email{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/check-email.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<div class="check-email-container">
+  <h2 class="check-email-title">Verify Your Email</h2>
+  
+  <p class="check-email-text">
+    🎉 Thanks for signing up! Please check your email inbox for a verification link.
+  </p>
+
+  <p class="check-email-subtext">
+    Didn’t receive the email? <a href="#">Resend verification</a>
+  </p>
+
+  <div class="redirect-login">
+    <p>Once verified, <a href="login.html">Login here</a></p>
+  </div>
+</div>
+{% endblock content %}

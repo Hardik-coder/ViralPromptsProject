@@ -162,7 +162,13 @@
   }
 }
 /* Footer */
+
 .site-footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-top: auto;
   background: rgba(255,255,255,0.06);
   border-top: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);

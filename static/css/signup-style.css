@@ -1,0 +1,106 @@
+/* Container */
+.signup-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(124,124,255,0.4);
+  text-align: center;
+}
+
+/* Title */
+.signup-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(124,124,255,0.6);
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #e0e0ff;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: inset 0 0 8px rgba(124,124,255,0.3);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  background: rgba(124,124,255,0.15);
+  box-shadow: 0 0 12px rgba(124,124,255,0.5);
+}
+
+/* Button */
+.signup-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  box-shadow: 0 0 15px rgba(124,124,255,0.6);
+}
+
+/* Redirect text */
+.redirect-text {
+  margin-top: 20px;
+  color: #e0e0ff;
+}
+
+.redirect-text a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.redirect-text a:hover {
+  text-shadow: 0 0 8px rgba(124,124,255,0.6);
+}
+.custom-error {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 80, 80, 0.15) !important;
+  color: #ffb3b3 !important;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 80, 80, 0.4);
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
