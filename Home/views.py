@@ -1,28 +1,28 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Prompt
+from .models import Prompt, Contactus
 from django.db.models import Q
 from django.http import Http404
 
 # Create your views here.
 def home(request):
     query = request.GET.get('q', '').strip()  # get search query from ?q=
-    tag_slug = request.GET.get("tag")
+    
     model_tag_slug = request.GET.get("model")
     # Fetch only active prompts, latest first
-    prompts_list = Prompt.objects.filter(is_active=True) \
-                            .only('id', 'title', 'image', 'created_at') \
-                            .order_by('-created_at')
+    prompts_list = Prompt.objects.filter(is_private=False, is_verified=True, is_active=True) \
+                            .only('id', 'title', 'image', 'created_at', 'user__username') \
+                            .order_by('-created_at') \
+                            .select_related("user")
                             
     if 2 < len(query) < 50:
         prompts_list = prompts_list.filter(
             Q(title__icontains=query) |
-            Q(prompt__icontains=query) |
-            Q(tags__name__icontains=query) 
+            Q(prompt__icontains=query) 
+             
         ).distinct()
     
-    if tag_slug:
-        prompts_list = prompts_list.filter(tags__slug=tag_slug) 
+     
         
     if model_tag_slug:
         prompts_list = prompts_list.filter(models_supported__slug=model_tag_slug)   
@@ -41,8 +41,27 @@ def home(request):
 
 def singlePrompt(request, pk):
     # Fetch the prompt by ID
-    prompt = get_object_or_404(Prompt.objects.prefetch_related('tags', 'models_supported'), id=pk)
+    prompt = get_object_or_404(Prompt.objects.prefetch_related('models_supported'), id=pk)
     return render(request, 'single-prompt.html', {'prompt': prompt})
 
 def comingSoon(request):
     return render(request, 'comingsoon.html')
+
+  
+
+def contactUs(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        # Save the contact message to the database
+        
+        contact_message = Contactus(
+            name=name,
+            email=email,
+            message=message
+        )
+        contact_message.save()
+        return render(request, 'contact.html', {'success': True})
+    return render(request, 'contact.html')

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/edit-prompt.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="edit-prompt container-fluid neon-glass p-4">
+  <h2 class="page-title mb-4">Edit Prompt</h2>
+
+  <!-- Prompt Info -->
+  <div class="prompt-info mb-4">
+    <img src="{{ prompt.image.url }}" alt="Prompt Preview" class="card-thumb mb-3">
+    <p><strong>Title:</strong> {{prompt.title}}</p>
+    <p><strong>Uploaded:</strong> {{ prompt.created_at|date:"d M Y" }}</p>
+    {% if prompt.is_verified and not prompt.is_private%}
+    <p><strong>Status:</strong> <span class="badge bg-success">Live</span></p>
+    {% endif %}
+    {% if not prompt.is_verified and not prompt.is_private %}
+    <p><strong>Status:</strong> <span class="badge bg-warning text-dark">Pending verification</span></p>
+    {% endif %}
+    {% if prompt.is_private %}
+    <p><strong>Status:</strong> <span class="badge bg-danger">Private</span></p>
+    {% endif %}
+  </div>
+
+  <!-- Edit Form -->
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- Public/Private Toggle -->
+    <div class="form-check form-switch mb-4">
+      <input class="form-check-input custom-switch" type="checkbox" id="isPublic" name="is_private" value="1" {% if prompt.is_private %}checked{% endif %}>
+      <label class="form-check-label" for="isPublic">Private</label>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex flex-column gap-3">
+      <button type="submit" name="action" value="save" class="btn btn-primary custom-btn w-100">Save Changes</button>
+      <button type="submit" name="action" value="delete" class="btn btn-danger custom-btn w-100">Delete Prompt</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

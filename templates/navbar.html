@@ -7,9 +7,15 @@
 
     <!-- Desktop nav links -->
     <ul class="navbar-menu">
-      <li><a href="#">Your Prompts</a></li>
-      <li><a href="#">Saved Prompts</a></li>
-      <li><a href="#">Login</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url "dashboard" %}">Dashboard</a></li>
+        <li><a href="{% url "contact" %}">Contact</a></li>
+        <li><a href="{% url "logout" %}">Logout</a></li>
+      {% else %}
+        
+        <li><a href="{% url "contact" %}">Contact</a></li>
+        <li><a href="{% url "login" %}">Login</a></li>
+      {% endif %}
     </ul>
   </nav>
 </header>
@@ -18,9 +24,15 @@
 <div class="navbar-card" id="navbar-card">
   
   <ul class="navbar-card-menu">
-    <li><a href="#">Your Prompts</a></li>
-    <li><a href="#">Saved Prompts</a></li>
-    <li><a href="#">Login</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url "dashboard" %}">Dashboard</a></li>
+        <li><a href="{% url "contact" %}">Contact</a></li>
+        <li><a href="{% url "logout" %}">Logout</a></li>
+      {% else %}
+        
+        <li><a href="{% url "contact" %}">Contact</a></li>
+        <li><a href="{% url "login" %}">Login</a></li>
+      {% endif %}
      <!-- Show emoji/avatar if logged in -->
   
   </ul>

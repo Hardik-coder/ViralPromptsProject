@@ -8,64 +8,67 @@
 
 
 {% block content %}
-<div class="prompt-block card neon-glass">
-  <div class="card-body">
 
+  
+<form action="" method="post" enctype="multipart/form-data" class="prompt-block card neon-glass">
+  {% csrf_token %}
+  <div class="card-body">
+    
+    
+    <!-- Block Title -->
     <h2 class="block-title mb-4">Add Prompt</h2>
+    
+{% if messages %}
+     {% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show custom-error-add" role="alert">
+  ⚠️ {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+  {% endfor %}
+  {% endif %}
 
     <!-- Title -->
     <div class="mb-3">
       <label for="promptTitle" class="form-label">Title</label>
-      <input type="text" class="form-control custom-input" id="promptTitle" placeholder="Enter prompt title">
+      <input type="text" class="form-control custom-input" id="promptTitle" name="title" placeholder="Enter prompt title" required>
     </div>
 
     <!-- Prompt Text -->
     <div class="mb-3">
       <label for="promptText" class="form-label">Prompt</label>
-      <textarea class="form-control custom-textarea" id="promptText" rows="6" placeholder="Write your prompt here..."></textarea>
+      <textarea class="form-control custom-textarea" id="promptText" name="prompt" rows="6" placeholder="Write your prompt here..." required></textarea>
     </div>
 
     <!-- Upload Image -->
     <div class="mb-3">
       <label for="promptImage" class="form-label">Upload Image</label>
-      <input class="form-control custom-file" type="file" id="promptImage">
+      <input class="form-control custom-file" type="file" id="promptImage" name="image">
     </div>
 
     <!-- Tags (multi-select) -->
-    <div class="mb-3">
-      <label for="promptTags" class="form-label">Tags</label>
-      <select class="form-select custom-select" id="promptTags" multiple>
-        <option>Photography</option>
-        <option>Art</option>
-        <option>Fantasy</option>
-        <option>Minimalism</option>
-        <option>Neon</option>
-      </select>
-    </div>
+
 
     <!-- Prompt List (multi-select) -->
     <div class="mb-3">
-      <label for="promptList" class="form-label">Prompt List</label>
-      <select class="form-select custom-select" id="promptList" multiple>
-        <option>Wallpaper</option>
-        <option>Poster</option>
-        <option>UI Background</option>
-        <option>Concept Art</option>
+      <label for="modelList" class="form-label">Prompt List</label>
+      <select class="form-select custom-select" id="modelList" name="model_list" multiple>
+        {% for model in models %}
+          <option value="{{ model.id }}">{{ model.name }}</option>
+        {% endfor %}
       </select>
     </div>
 
     <!-- Public Checkbox -->
     <div class="form-check mb-3">
-      <input class="form-check-input custom-check" type="checkbox" id="isPublic">
+      <input class="form-check-input custom-check" type="checkbox" id="isPublic" name="is_private" value="1">
       <label class="form-label" for="isPublic">
-        Make this prompt public
+        Make this prompt Private
       </label>
     </div>
 
     <!-- Upload Button -->
-    <button type="submit" class="btn btn-primary custom-btn w-100">
-  Upload Prompt
-</button>
+    <button type="submit" class="btn btn-primary custom-btn w-100">Upload Prompt</button>
   </div>
-</div>
+</form>
 {% endblock content %}
+

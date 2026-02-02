@@ -24,12 +24,7 @@
 {% include "footer-base.html" %}
 <!-- JS -->
 <script>
- // Clear button functionality
-  document.querySelector('.clear-btn').addEventListener('click', () => {
-    const input = document.getElementById('searchInput');
-    input.value = "";              // clear the text
-    input.focus();                 // optional: put cursor back in the box
-  });
+{% block scripts %}{% endblock scripts %}
 
 const toggle = document.getElementById('navbar-toggle');
 const card = document.getElementById('navbar-card');

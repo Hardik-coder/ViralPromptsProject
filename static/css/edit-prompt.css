@@ -1,0 +1,60 @@
+.edit-prompt {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(124,124,255,0.4);
+  margin: 40px auto;
+  max-width: 600px;
+  color: #f0f4ff;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(124,124,255,0.6);
+}
+
+.prompt-info p {
+  color: #cbd5f5;
+  margin: 5px 0;
+}
+
+.custom-switch {
+  background-color: #7c7cff;
+  border: none;
+  box-shadow: 0 0 8px rgba(124,124,255,0.6);
+}
+
+.custom-btn {
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px;
+  box-shadow: 0 0 12px rgba(124,124,255,0.6);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary.custom-btn {
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+}
+
+.btn-danger.custom-btn {
+  background: linear-gradient(135deg, #ff4d6d, #ff7c7c);
+}
+
+.custom-btn:hover {
+  box-shadow: 0 0 18px rgba(124,124,255,0.8);
+}
+.card-thumb {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(124,124,255,0.4);
+}

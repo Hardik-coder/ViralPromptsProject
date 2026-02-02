@@ -26,7 +26,7 @@
     <!-- Card Header with Prompt ID and Title -->
     <div class="card-header d-flex justify-content-between align-items-start mb-3">
       <h5 class="card-title">{{ prompt.title }}</h5>
-        <span class="prompt-id">#P00{{ prompt.id }}</span>
+        <span class="prompt-id">{% if prompt.user.username == "adminHardikVbhavsar" %}Admin {% else %}{{ prompt.user.username }}{% endif %}</span>
       
     </div>
 
@@ -80,3 +80,11 @@
 {% endif %}
 </div>
 {% endblock content %}
+{% block scripts %}
+ // Clear button functionality
+  document.querySelector('.clear-btn').addEventListener('click', () => {
+    const input = document.getElementById('searchInput');
+    input.value = "";              // clear the text
+    input.focus();                 // optional: put cursor back in the box
+  });
+{% endblock scripts %}

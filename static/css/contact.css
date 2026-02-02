@@ -1,0 +1,84 @@
+.contact-page {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(124,124,255,0.4);
+  margin: 40px auto;
+  max-width: 800px;
+  color: #f0f4ff;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(124,124,255,0.6);
+}
+
+.info-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: #cbd5f5;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #7c7cff;
+}
+
+.custom-input {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  box-shadow: inset 0 0 8px rgba(124,124,255,0.4);
+}
+
+.custom-input:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(124,124,255,0.6);
+}
+
+.custom-btn {
+  background: linear-gradient(135deg, #7c7cff, #38bdf8);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px;
+  box-shadow: 0 0 12px rgba(124,124,255,0.6);
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+  box-shadow: 0 0 18px rgba(124,124,255,0.8);
+}
+.custom-alert {
+  backdrop-filter: blur(12px);
+  background: rgba(34,197,94,0.15); /* green glow base */
+  border: 1px solid rgba(34,197,94,0.4);
+  border-radius: 12px;
+  color: #d1fae5; /* light green text */
+  box-shadow: 0 0 15px rgba(34,197,94,0.6);
+  font-weight: 500;
+}
+
+.custom-close {
+  filter: invert(1) brightness(2); /* makes close icon visible on dark bg */
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.custom-close:hover {
+  opacity: 1;
+}

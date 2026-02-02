@@ -31,17 +31,16 @@
 
     <button type="submit" class="login-btn">Login</button>
   </form>
+<div class="d-flex justify-content-between">
 
   <p class="redirect-text">
-    New user? <a href="{% url "signup" %}">Create an account</a>
+  <a href="{% url "signup" %}">Create an account</a>
   </p>
-
-  <!-- Google Login Block -->
-  <div class="google-login">
-  <a href="/auth/google" class="google-btn" style="text-decoration: none;">
-    <img src="{% static "images/google-logo.png" %}" alt="Google Logo" class="google-icon">
-    Login with Google
-  </a>
+  <p class="redirect-text">
+  <a href="{% url "password_reset" %}">Forgot password?</a>
+  </p>
 </div>
+  <!-- Google Login Block -->
+  
 </div>
 {% endblock content %}
