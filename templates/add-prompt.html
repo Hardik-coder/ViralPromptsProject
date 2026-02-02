@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Prompt{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/add-prompt.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<div class="prompt-block card neon-glass">
+  <div class="card-body">
+
+    <h2 class="block-title mb-4">Add Prompt</h2>
+
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="promptTitle" class="form-label">Title</label>
+      <input type="text" class="form-control custom-input" id="promptTitle" placeholder="Enter prompt title">
+    </div>
+
+    <!-- Prompt Text -->
+    <div class="mb-3">
+      <label for="promptText" class="form-label">Prompt</label>
+      <textarea class="form-control custom-textarea" id="promptText" rows="6" placeholder="Write your prompt here..."></textarea>
+    </div>
+
+    <!-- Upload Image -->
+    <div class="mb-3">
+      <label for="promptImage" class="form-label">Upload Image</label>
+      <input class="form-control custom-file" type="file" id="promptImage">
+    </div>
+
+    <!-- Tags (multi-select) -->
+    <div class="mb-3">
+      <label for="promptTags" class="form-label">Tags</label>
+      <select class="form-select custom-select" id="promptTags" multiple>
+        <option>Photography</option>
+        <option>Art</option>
+        <option>Fantasy</option>
+        <option>Minimalism</option>
+        <option>Neon</option>
+      </select>
+    </div>
+
+    <!-- Prompt List (multi-select) -->
+    <div class="mb-3">
+      <label for="promptList" class="form-label">Prompt List</label>
+      <select class="form-select custom-select" id="promptList" multiple>
+        <option>Wallpaper</option>
+        <option>Poster</option>
+        <option>UI Background</option>
+        <option>Concept Art</option>
+      </select>
+    </div>
+
+    <!-- Public Checkbox -->
+    <div class="form-check mb-3">
+      <input class="form-check-input custom-check" type="checkbox" id="isPublic">
+      <label class="form-label" for="isPublic">
+        Make this prompt public
+      </label>
+    </div>
+
+    <!-- Upload Button -->
+    <button type="submit" class="btn btn-primary custom-btn w-100">
+  Upload Prompt
+</button>
+  </div>
+</div>
+{% endblock content %}

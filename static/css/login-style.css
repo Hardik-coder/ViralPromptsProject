@@ -124,3 +124,13 @@
   width: 20px;
   height: 20px;
 }
+.custom-error {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 80, 80, 0.15) !important;
+  color: #ffb3b3 !important;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 80, 80, 0.4);
+  font-weight: 600;
+  text-align: center;
+}
+

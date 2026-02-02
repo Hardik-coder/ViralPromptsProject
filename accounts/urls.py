@@ -5,7 +5,8 @@ urlpatterns = [
     path('signup/', views.signupUser, name='signup'),
     path('login/', views.loginUser, name='login'),
     path('verify/<uidb64>/<token>', views.verifyUser, name="verify"),
-    path('check-email/', views.checkEmail, name='check-email')
+    path('check-email/', views.checkEmail, name='check-email'),
+    path('logout/', views.logoutUser, name="logout"),
     
 
 ]

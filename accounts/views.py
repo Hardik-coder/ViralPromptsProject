@@ -8,7 +8,6 @@ from django.core.exceptions import ValidationError
 #xmna izoq ajhg hlyt
 #token verification
 from django.http import Http404
-from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -111,5 +110,32 @@ def verifyUser(request, uidb64, token):
 def checkEmail(request):
     return render(render, 'check-email.html')
 
+
+
+#Login User
+
+
 def loginUser(request):
-    return render(request, 'login.html')
+    if request.method == "POST":
+        identifier = request.POST.get("identifier")  # username or email
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            username=identifier,
+            password=password
+        )
+
+        if user:
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "Invalid credentials")
+            return redirect("login")
+
+    return render(request, "login.html")
+
+def logoutUser(request):
+    logout(request)
+    
+    return redirect('home')

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'prompts.apps.PromptsConfig',
     'accounts.apps.AccountsConfig',
     'Home.apps.HomeConfig',
     'django.contrib.admin',
@@ -132,4 +133,8 @@ EMAIL_HOST_PASSWORD = "xmnaizoqajhghlyt"
 
 DEFAULT_FROM_EMAIL = "ViralPrompts <viralprompts.verify@gmail.com>"
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.UsernameOrEmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
