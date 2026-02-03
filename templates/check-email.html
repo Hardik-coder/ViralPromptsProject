@@ -14,12 +14,10 @@
     🎉 Thanks for signing up! Please check your email inbox for a verification link.
   </p>
 
-  <p class="check-email-subtext">
-    Didn’t receive the email? <a href="#">Resend verification</a>
-  </p>
+ 
 
   <div class="redirect-login">
-    <p>Once verified, <a href="login.html">Login here</a></p>
+    <p>Once verified, <a href="{% url "login" %}">Login here</a></p>
   </div>
 </div>
 {% endblock content %}

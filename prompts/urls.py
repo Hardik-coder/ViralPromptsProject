@@ -4,6 +4,7 @@ urlpatterns = [
     
     path('add/', views.addPrompt, name='add'),
     path('dashboard/', views.userDashboard, name='dashboard'),
-    path('edit/<int:pk>', views.editPrompt, name='edit')
+    path('edit/<int:pk>', views.editPrompt, name='edit'),
+    path('admin-dashboard/', views.adminDashboard, name='admin-dashboard'),
     
 ]

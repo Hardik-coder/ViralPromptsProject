@@ -24,6 +24,9 @@ from django.conf import settings
 
 # Create your views here.
 def signupUser(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email", "").lower()
@@ -108,7 +111,9 @@ def verifyUser(request, uidb64, token):
         raise Http404("Verification link expired")
 
 def checkEmail(request):
-    return render(render, 'check-email.html')
+    if request.user.is_authenticated:
+        return redirect('home')
+    return render(request, 'check-email.html')
 
 
 
@@ -116,6 +121,8 @@ def checkEmail(request):
 
 
 def loginUser(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == "POST":
         identifier = request.POST.get("identifier")  # username or email
         password = request.POST.get("password")
@@ -134,6 +141,7 @@ def loginUser(request):
             return redirect("login")
 
     return render(request, "login.html")
+
 
 def logoutUser(request):
     logout(request)

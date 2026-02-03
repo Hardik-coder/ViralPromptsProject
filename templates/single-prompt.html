@@ -23,10 +23,21 @@
 
   <!-- Prompt ID -->
   <div class="text-center mb-3">
-    <span class="prompt-id">Prompt #P00{{ prompt.id }}</span>
+    <span class="prompt-id">{% if prompt.user.username == "adminHardikVbhavsar" %}Admin {% else %}{{ prompt.user.username }}{% endif %}</span>
   </div>
 
   <!-- Buttons -->
+
+  {% if user.is_superuser %}
+<form method="post" action="">
+  {% csrf_token %}
+ <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
+    <button name="action" value="verify" class="btn custom-btn-green flex-fill">Verify</button>
+    <button name="action" value="delete" class="btn custom-btn-red flex-fill">Delete</button>
+  </div>  
+</form> 
+  {% endif %}
+
   <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
     <button class="btn btn-copy flex-fill">📋 Copy Prompt</button>
     <button class="btn btn-share flex-fill">🔗 Share</button>
@@ -39,7 +50,7 @@
   <div class="prompt-instructions mt-4">
     <span class="prompt-preview">
       <h5 class="instruction-title">✨ Prompt Preview</h5>
-      <p>{{ prompt.prompt|truncatechars:200 }}</p>
+      <p>{% if user.is_superuser %}{{prompt.prompt}}{% else %}{{ prompt.prompt|truncatechars:200 }}{% endif %}</p>
 
     </span>
     <!-- Full Prompt (hidden for copy) -->

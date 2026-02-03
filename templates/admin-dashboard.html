@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Admin-Dashboard{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/user-dashboard.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<div class="dashboard container-fluid neon-glass p-4">
+  <h2 class="dashboard-title mb-4">Admin Dashboard</h2>
+
+  <!-- User Info -->
+<!-- Dashboard Header -->
+<div class="dashboard-header mb-4">
+  <div class="user-info">
+    <p><strong>Name:</strong> {{user.first_name}}</p>
+    <p><strong>Total Users:</strong> {{total_users}}</p>
+    <p><strong>Prompts need to be verified:</strong> {{prompts_count}}</p>
+  </div>
+
+  <!-- Add Prompt Button -->
+  
+</div>
+
+  <!-- Prompt Cards Grid -->
+  <div class="row g-4">
+    {% for prompt in prompt_obj %}
+    <!-- Prompt Card -->
+    <div class="col-md-4">
+      <div class="main-card neon-glass p-3 h-100 d-flex flex-column">
+        <img src="{{ prompt.image.url }}" alt="Prompt Preview" class="card-thumb mb-3">
+        <h5 class="card-title">{{ prompt.title }}</h5>
+        <p class="card-date">Uploaded: {{ prompt.created_at|date:"d M Y" }}</p>
+      {% if prompt.is_verified and not prompt.is_private%}<p class="card-status">Status: <span class="badge bg-success">Live<span></p>{% endif %}
+        {% if not prompt.is_verified and not prompt.is_private %}<p class="card-status">Status: <span class="badge bg-warning text-dark">Pending Verification</span></p>{% endif %}
+{% if prompt.is_private %}<p class="card-status">Status: <span class="badge bg-danger">Private</span></p>{% endif %}
+        
+        <div class="d-flex gap-2 mt-auto">
+   
+  <a href="{% url "prompt" prompt.id %}" class="btn btn-primary custom-btn w-100 mt-auto">View</a>
+</div>
+
+      </div>
+    </div>
+    {% empty %}
+  <!-- Search Not Found Block -->
+<div class="search-not-found text-center mt-5">
+  <h3 class="not-found-title">Admin dashboard is empty.</h3>
+  <p class="not-found-subtitle">No prompts to verify</p>
+
+
+</div>
+{% endfor %}
+    
+
+  </div>
+</div>
+
+
+<div class="pagination-bar d-flex justify-content-center align-items-center gap-3 mt-5">
+  {% if prompt_obj.has_previous %}
+  <a href="?page={{ prompt_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" class="page-btn prev-btn d-flex align-items-center gap-2">
+    <span class="arrow">←</span>
+    <span>Previous</span>
+  </a>
+{% endif %}
+  <!-- Page Number Indicator -->
+  <span class="page-indicator">Page {{ prompt_obj.number }} of {{ prompt_obj.paginator.num_pages }}</span>
+  {% if prompt_obj.has_next %}
+  <a href="?page={{ prompt_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}" class="page-btn next-btn d-flex align-items-center gap-2">
+    <span>Next</span>
+    <span class="arrow">→</span>
+  </a>
+{% endif %}
+</div>
+
+{% endblock content %}

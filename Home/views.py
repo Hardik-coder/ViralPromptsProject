@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Prompt, Contactus
 from django.db.models import Q
@@ -42,6 +42,17 @@ def home(request):
 def singlePrompt(request, pk):
     # Fetch the prompt by ID
     prompt = get_object_or_404(Prompt.objects.prefetch_related('models_supported'), id=pk)
+    
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            action = request.POST.get('action')
+            if action == 'verify':
+                prompt.is_verified = True
+                prompt.save()
+                return redirect('admin-dashboard')
+            elif action == 'delete':
+                prompt.delete()
+                return redirect('admin-dashboard')
     return render(request, 'single-prompt.html', {'prompt': prompt})
 
 def comingSoon(request):

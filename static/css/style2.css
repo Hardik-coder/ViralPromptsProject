@@ -172,3 +172,33 @@ body {
   }
 }
 
+.custom-btn-red {
+  background: linear-gradient(135deg, #ff4d6d, #ff7c7c); /* red shades */
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(255,77,109,0.6);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.custom-btn-red:hover {
+  box-shadow: 0 0 18px rgba(255,77,109,0.8);
+}
+.custom-btn-green {
+  background: linear-gradient(135deg, #22c55e, #84cc16); /* green shades */
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(34,197,94,0.6);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.custom-btn-green:hover {
+  box-shadow: 0 0 18px rgba(34,197,94,0.8);
+}

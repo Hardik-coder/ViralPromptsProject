@@ -4,6 +4,7 @@ from Home.models import Prompt, AIModel
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -64,4 +65,25 @@ def editPrompt(request, pk):   #Edit and Delete both
        
     
     return render(request, 'edit-prompt.html', {"prompt": prompt})
+
+@login_required
+def adminDashboard(request):
+    if request.user.is_superuser:
+        prompts = Prompt.objects.filter(is_verified=False).order_by('-created_at')
+        paginator = Paginator(prompts, 9)
+        page_number = request.GET.get('page')
+        if page_number is None:
+            page_number = 1
+        try:
+            prompt_obj = paginator.page(page_number)
+        except (EmptyPage, PageNotAnInteger):
+            raise Http404("not found")
+            
+        
+    else:
+        return Http404("not found")
+      
+    
+    return render(request, 'admin-dashboard.html', {"prompt_obj": prompt_obj, "prompts_count": prompts.count(), "total_users": User.objects.count()})
+
 
