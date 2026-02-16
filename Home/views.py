@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Prompt, Contactus
+from .models import Prompt, Contact
 from django.db.models import Q
 from django.http import Http404
 
@@ -68,7 +68,7 @@ def contactUs(request):
 
         # Save the contact message to the database
         
-        contact_message = Contactus(
+        contact_message = Contact(
             name=name,
             email=email,
             message=message

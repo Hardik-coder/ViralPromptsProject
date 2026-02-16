@@ -69,7 +69,8 @@ def signupUser(request):
             "uidb64": uid,
             "token": token
         })
-        full_link = f"http://{current_site.domain}{verify_url}"
+        protocol = "https" if request.is_secure() else "http"
+        full_link = f"{protocol}://{current_site.domain}{verify_url}"
         
         
         
